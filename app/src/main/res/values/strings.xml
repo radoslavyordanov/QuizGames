@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Quiz Games</string>
+    <!-- Main Fragment -->
+    <string name="play">Play</string>
+    <string name="topScores">Top scores</string>
+
+    <!-- Quiz Selection Fragment -->
+    <string name="carsQuiz">Cars quiz</string>
+    <string name="logosQuiz">Logos quiz</string>
+    <string name="citiesQuiz">Cities quiz</string>
 </resources>
