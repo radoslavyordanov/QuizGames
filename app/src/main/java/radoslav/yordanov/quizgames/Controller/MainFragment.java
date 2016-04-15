@@ -16,7 +16,7 @@ public class MainFragment extends Fragment {
     public MainFragment() {
         // Required empty public constructor
     }
-    
+//http://46.40.127.6:3000/results/cars
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

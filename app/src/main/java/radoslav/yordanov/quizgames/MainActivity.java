@@ -1,13 +1,21 @@
 package radoslav.yordanov.quizgames;
 
+import android.os.AsyncTask;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+
+import java.io.IOException;
+import java.util.List;
 
 import radoslav.yordanov.quizgames.Controller.MainFragment;
 import radoslav.yordanov.quizgames.Controller.QuizSelectionFragment;
+import radoslav.yordanov.quizgames.Model.Quiz;
+import retrofit.Call;
+import retrofit.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onCarQuizClick(View view) {
+        new CarsQuizTask().execute();
     }
 
     public void onLogosQuizClick(View view) {
@@ -42,4 +51,28 @@ public class MainActivity extends AppCompatActivity {
     public void onCitiesQuizClick(View view) {
     }
 
+    private class CarsQuizTask extends AsyncTask<String, Void, Quiz> {
+        @Override
+        protected Quiz doInBackground(String... params) {
+
+
+            QuizGamesAPI quizService = QuizGamesApplication.getQuizGamesService();
+
+
+            Call<List<Quiz>> getCarsQuizCall = quizService.getCarsQuiz();
+            try {
+                Response<List<Quiz>> getCarsQuizResponse = getCarsQuizCall.execute();
+                Log.e("gg", "gg");
+
+            } catch (IOException e) {
+
+            }
+
+            return null;
+        }
+
+
+    }
 }
+
+
