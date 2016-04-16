@@ -4,8 +4,11 @@
     <string name="play">Play</string>
     <string name="topScores">Top scores</string>
 
-    <!-- Quiz Selection Fragment -->
+    <!-- QuizAPI Selection Fragment -->
     <string name="carsQuiz">Cars quiz</string>
     <string name="logosQuiz">Logos quiz</string>
     <string name="citiesQuiz">Cities quiz</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

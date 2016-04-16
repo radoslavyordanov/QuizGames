@@ -2,7 +2,7 @@ package radoslav.yordanov.quizgames;
 
 import java.util.List;
 
-import radoslav.yordanov.quizgames.Model.Quiz;
+import radoslav.yordanov.quizgames.Model.QuizAPI;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -17,5 +17,5 @@ public interface QuizGamesAPI {
             "content-type: application/json"
     })
     @GET("/quiz/{quizType}")
-    Call<List<Quiz>> getQuiz(@Path("quizType") String quizType);
+    Call<List<QuizAPI>> getQuiz(@Path("quizType") String quizType);
 }
