@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -24,7 +25,6 @@ public class QuizChoiceFragment extends Fragment implements View.OnClickListener
 
     private ArrayList<QuizChoice> quizChoices;
     private String quizImage;
-
 
     public QuizChoiceFragment() {
         // Required empty public constructor
@@ -52,6 +52,7 @@ public class QuizChoiceFragment extends Fragment implements View.OnClickListener
         if (getArguments() != null) {
             quizImage = getArguments().getString(QUIZ_IMAGE);
             quizChoices = getArguments().getParcelableArrayList(QUIZ_CHOICES);
+
         }
     }
 
@@ -60,6 +61,11 @@ public class QuizChoiceFragment extends Fragment implements View.OnClickListener
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_quiz_choice, container, false);
+
+        ImageView questionImg = (ImageView) rootView.findViewById(R.id.questionImg);
+        int id = getResources().getIdentifier(quizImage, "drawable", getActivity().getPackageName());
+        questionImg.setImageResource(id);
+
         Button selection1 = (Button) rootView.findViewById(R.id.selection1);
         Button selection2 = (Button) rootView.findViewById(R.id.selection2);
         Button selection3 = (Button) rootView.findViewById(R.id.selection3);
@@ -76,6 +82,6 @@ public class QuizChoiceFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        Log.e("is right cghoice:", String.valueOf((int) v.getTag()));
+        Log.e("is right choice:", String.valueOf((int) v.getTag()));
     }
 }

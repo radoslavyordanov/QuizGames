@@ -34,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     public void onTopScoresClick(View view) {
     }
 
+    public void onAboutClick(View view) {
+    }
+
     public void onCarsQuizClick(View view) {
         //new CarsQuizTask().execute("cars");
         Intent intent = new Intent(this, QuizActivity.class);
