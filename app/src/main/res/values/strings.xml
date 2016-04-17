@@ -17,4 +17,13 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Score Activity -->
+    <string name="scoreResult">Your score is:\n %d</string>
+    <string name="submitScore">Submit</string>
+    <string name="enterNickname">Enter nickname:</string>
+    <string name="loading">Loading. Please wait...</string>
+    <string name="nicknameEmpty">Nickname can\'t be empty. Please try again.</string>
+    <string name="cancel">Cancel</string>
+    <string name="scoreSubmitted">Score submitted successfully!</string>
 </resources>

@@ -1,8 +1,10 @@
 package radoslav.yordanov.quizgames.Controller;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +29,7 @@ import retrofit2.Response;
 public class QuizActivity extends AppCompatActivity {
 
     public static final String EXTRA_quizType = "quizType";
+    private String quizType;
     private static final int MAX_TIME = 20;
     private static final int MAX_POINTS = 100;
     private int score = 0;
@@ -44,7 +47,8 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
         res = getResources();
         mViewPager = (NonSwipeViewPager) findViewById(R.id.quizPager);
-        new QuizTask().execute(getIntent().getStringExtra(EXTRA_quizType));
+        quizType = getIntent().getStringExtra(EXTRA_quizType);
+        new QuizTask().execute(quizType);
         stopWatchTV = (TextView) findViewById(R.id.stopWatchTV);
         String timeLeftText = String.format(res.getString(R.string.timeLeft), 0);
         stopWatchTV.setText(timeLeftText);
@@ -83,7 +87,14 @@ public class QuizActivity extends AppCompatActivity {
             scoreTV.setText(scoreText);
         }
         if (mViewPager.getCurrentItem() == quizList.size() - 1) {
-            // launch scoreActivity
+            stopWatch.stop();
+            Intent intent = new Intent(this, ScoreActivity.class);
+            intent.putExtra(ScoreActivity.EXTRA_score, score);
+            intent.putExtra(ScoreActivity.EXTRA_quizType, quizType);
+            TaskStackBuilder sBuilder = TaskStackBuilder.create(this);
+            sBuilder.addParentStack(ScoreActivity.class);
+            sBuilder.addNextIntent(intent);
+            sBuilder.startActivities();
         } else
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
 
@@ -135,12 +146,13 @@ public class QuizActivity extends AppCompatActivity {
                     }
                     // Add the last item
                     quizList.add(quizModel);
+                    return true;
                 }
             } catch (IOException e) {
                 return false;
             }
 
-            return true;
+            return false;
         }
 
         @Override
@@ -172,12 +184,20 @@ public class QuizActivity extends AppCompatActivity {
             }
             if (stopWatch.getElapsedTimeSecs() == MAX_TIME) {
                 if (mViewPager.getCurrentItem() == quizList.size() - 1) {
-                    // launch scoreActivity
-                } else
+                    stopWatch.stop();
+                    Intent intent = new Intent(QuizActivity.this, ScoreActivity.class);
+                    intent.putExtra(ScoreActivity.EXTRA_score, score);
+                    intent.putExtra(ScoreActivity.EXTRA_quizType, quizType);
+                    TaskStackBuilder sBuilder = TaskStackBuilder.create(QuizActivity.this);
+                    sBuilder.addParentStack(ScoreActivity.class);
+                    sBuilder.addNextIntent(intent);
+                    sBuilder.startActivities();
+                } else {
                     mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+                    stopWatch = new Stopwatch();
+                    stopWatch.start();
+                }
 
-                stopWatch = new Stopwatch();
-                stopWatch.start();
             }
             runOnUiThread(new Runnable() {
                 @Override

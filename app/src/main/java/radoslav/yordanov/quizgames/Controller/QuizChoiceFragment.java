@@ -2,7 +2,6 @@ package radoslav.yordanov.quizgames.Controller;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,7 @@ import radoslav.yordanov.quizgames.R;
  * Use the {@link QuizChoiceFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class QuizChoiceFragment extends Fragment implements View.OnClickListener {
+public class QuizChoiceFragment extends Fragment {
     private static final String QUIZ_CHOICES = "QUIZ_CHOICES";
     private static final String QUIZ_IMAGE = "QUIZ_IMAGE";
 
@@ -72,16 +71,10 @@ public class QuizChoiceFragment extends Fragment implements View.OnClickListener
         Button selection4 = (Button) rootView.findViewById(R.id.selection4);
         Button[] selections = {selection1, selection2, selection3, selection4};
         for (int i = 0; i < 4; i++) {
-         //   selections[i].setOnClickListener(this);
             selections[i].setText(quizChoices.get(i).getChoice());
             selections[i].setTag(quizChoices.get(i).getIsRightChoice());
         }
         return rootView;
     }
 
-
-    @Override
-    public void onClick(View v) {
-        Log.e("is right choice:", String.valueOf((int) v.getTag()));
-    }
 }

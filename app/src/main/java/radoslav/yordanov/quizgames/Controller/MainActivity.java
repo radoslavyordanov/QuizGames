@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onCarsQuizClick(View view) {
-        //new CarsQuizTask().execute("cars");
         Intent intent = new Intent(this, QuizActivity.class);
         intent.putExtra(QuizActivity.EXTRA_quizType, "cars");
         startActivity(intent);
