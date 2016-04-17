@@ -1,9 +1,11 @@
-package radoslav.yordanov.quizgames;
+package radoslav.yordanov.quizgames.Controller;
 
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -14,6 +16,9 @@ import radoslav.yordanov.quizgames.Adapter.QuizAdapter;
 import radoslav.yordanov.quizgames.Model.Quiz;
 import radoslav.yordanov.quizgames.Model.QuizAPI;
 import radoslav.yordanov.quizgames.Model.QuizChoice;
+import radoslav.yordanov.quizgames.QuizGamesAPI;
+import radoslav.yordanov.quizgames.QuizGamesApplication;
+import radoslav.yordanov.quizgames.R;
 import radoslav.yordanov.quizgames.Util.Stopwatch;
 import radoslav.yordanov.quizgames.View.NonSwipeViewPager;
 import retrofit2.Call;
@@ -22,19 +27,30 @@ import retrofit2.Response;
 public class QuizActivity extends AppCompatActivity {
 
     public static final String EXTRA_quizType = "quizType";
+    private static final int MAX_TIME = 20;
+    private static final int MAX_POINTS = 100;
+    private int score = 0;
+    private Resources res;
     private NonSwipeViewPager mViewPager;
     private ArrayList<Quiz> quizList;
     private int previousQuizId = -1;
     private Stopwatch stopWatch;
-    private TextView stopWatchView;
+    private TextView stopWatchTV;
+    private TextView scoreTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+        res = getResources();
         mViewPager = (NonSwipeViewPager) findViewById(R.id.quizPager);
         new QuizTask().execute(getIntent().getStringExtra(EXTRA_quizType));
-        stopWatchView = (TextView) findViewById(R.id.stopWatchView);
+        stopWatchTV = (TextView) findViewById(R.id.stopWatchTV);
+        String timeLeftText = String.format(res.getString(R.string.timeLeft), 0);
+        stopWatchTV.setText(timeLeftText);
+        scoreTV = (TextView) findViewById(R.id.scoreTV);
+        String scoreText = String.format(res.getString(R.string.score), score);
+        scoreTV.setText(scoreText);
 
      /*   Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -57,6 +73,19 @@ public class QuizActivity extends AppCompatActivity {
             }
         }, 0, 1000);*/
 
+
+    }
+
+    public void onSelectionClick(View view) {
+        if ((int) view.getTag() == 1) {
+            score += (MAX_POINTS / MAX_TIME) * (MAX_TIME - stopWatch.getElapsedTimeSecs());
+            String scoreText = String.format(res.getString(R.string.score), score);
+            scoreTV.setText(scoreText);
+        }
+        if (mViewPager.getCurrentItem() == quizList.size() - 1) {
+            // launch scoreActivity
+        } else
+            mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
 
     }
 
@@ -128,12 +157,11 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
-    public class RepeatingThread implements Runnable {
+    private class RepeatingThread implements Runnable {
 
         private final Handler mHandler = new Handler();
 
         public RepeatingThread() {
-
         }
 
         @Override
@@ -142,16 +170,20 @@ public class QuizActivity extends AppCompatActivity {
                 stopWatch = new Stopwatch();
                 stopWatch.start();
             }
-            if (stopWatch.getElapsedTimeSecs() == 20) {
-                mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+            if (stopWatch.getElapsedTimeSecs() == MAX_TIME) {
+                if (mViewPager.getCurrentItem() == quizList.size() - 1) {
+                    // launch scoreActivity
+                } else
+                    mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+
                 stopWatch = new Stopwatch();
                 stopWatch.start();
             }
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    String timeLeftText = String.format(getResources().getString(R.string.timeLeft), 20 - stopWatch.getElapsedTimeSecs());
-                    stopWatchView.setText(timeLeftText);
+                    String timeLeftText = String.format(res.getString(R.string.timeLeft), MAX_TIME - stopWatch.getElapsedTimeSecs());
+                    stopWatchTV.setText(timeLeftText);
                 }
             });
 

@@ -1,4 +1,4 @@
-package radoslav.yordanov.quizgames;
+package radoslav.yordanov.quizgames.Controller;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
@@ -7,8 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import radoslav.yordanov.quizgames.Controller.MainFragment;
-import radoslav.yordanov.quizgames.Controller.QuizSelectionFragment;
+import radoslav.yordanov.quizgames.R;
 
 public class MainActivity extends AppCompatActivity {
 

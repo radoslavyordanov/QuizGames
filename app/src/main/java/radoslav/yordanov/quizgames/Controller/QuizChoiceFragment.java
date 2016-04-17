@@ -72,7 +72,7 @@ public class QuizChoiceFragment extends Fragment implements View.OnClickListener
         Button selection4 = (Button) rootView.findViewById(R.id.selection4);
         Button[] selections = {selection1, selection2, selection3, selection4};
         for (int i = 0; i < 4; i++) {
-            selections[i].setOnClickListener(this);
+         //   selections[i].setOnClickListener(this);
             selections[i].setText(quizChoices.get(i).getChoice());
             selections[i].setTag(quizChoices.get(i).getIsRightChoice());
         }
