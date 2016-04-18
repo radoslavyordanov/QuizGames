@@ -40,6 +40,7 @@ public class QuizActivity extends AppCompatActivity {
     private Stopwatch stopWatch;
     private TextView stopWatchTV;
     private TextView scoreTV;
+    private TextView questionPositionTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,9 @@ public class QuizActivity extends AppCompatActivity {
         scoreTV = (TextView) findViewById(R.id.scoreTV);
         String scoreText = String.format(res.getString(R.string.score), score);
         scoreTV.setText(scoreText);
+        questionPositionTV = (TextView) findViewById(R.id.questionPositionTV);
+        String questionPos = String.format(res.getString(R.string.questionPosition), 1, 20);
+        questionPositionTV.setText(questionPos);
 
      /*   Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -95,8 +99,13 @@ public class QuizActivity extends AppCompatActivity {
             sBuilder.addParentStack(ScoreActivity.class);
             sBuilder.addNextIntent(intent);
             sBuilder.startActivities();
-        } else
+        } else {
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+            String questionPos = String.format(res.getString(R.string.questionPosition), mViewPager.getCurrentItem() + 1, quizList.size());
+            questionPositionTV.setText(questionPos);
+            stopWatch = new Stopwatch();
+            stopWatch.start();
+        }
 
     }
 
@@ -194,6 +203,8 @@ public class QuizActivity extends AppCompatActivity {
                     sBuilder.startActivities();
                 } else {
                     mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+                    String questionPos = String.format(res.getString(R.string.questionPosition), mViewPager.getCurrentItem() + 1, quizList.size());
+                    questionPositionTV.setText(questionPos);
                     stopWatch = new Stopwatch();
                     stopWatch.start();
                 }

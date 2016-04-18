@@ -14,6 +14,7 @@
     <!-- Activity Quiz -->
     <string name="timeLeft">Time left: %d</string>
     <string name="score">Score: %d</string>
+    <string name="questionPosition">%1$d of %2$d</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
