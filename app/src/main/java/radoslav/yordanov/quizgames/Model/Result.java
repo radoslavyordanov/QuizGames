@@ -1,8 +1,5 @@
 package radoslav.yordanov.quizgames.Model;
 
-/**
- * Created by radoslav on 4/17/16.
- */
 public class Result {
     private String name;
     private int score;

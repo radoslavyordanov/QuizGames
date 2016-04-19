@@ -10,10 +10,6 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-
-/**
- * Created by radoslav on 4/15/16.
- */
 public class QuizGamesApplication extends Application {
     private static QuizGamesAPI quizGamesService;
     private static final String endpoint = "http://46.40.127.6:3000";

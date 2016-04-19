@@ -1,8 +1,5 @@
 package radoslav.yordanov.quizgames.Model;
 
-/**
- * Created by radoslav on 4/15/16.
- */
 public class QuizAPI {
     private int quiz_id;
     private String quiz_image;

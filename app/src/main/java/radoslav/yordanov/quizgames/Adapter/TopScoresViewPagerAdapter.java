@@ -8,9 +8,6 @@ import android.support.v4.app.FragmentManager;
 import radoslav.yordanov.quizgames.Controller.TopScoresFragment;
 import radoslav.yordanov.quizgames.R;
 
-/**
- * Created by radoslav on 4/16/16.
- */
 public class TopScoresViewPagerAdapter extends FragmentStatePagerAdapter {
     private String[] navMenuTitles;
 

@@ -28,9 +28,6 @@ import radoslav.yordanov.quizgames.View.NetworkDialog;
 import retrofit2.Call;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class TopScoresFragment extends Fragment {
     public static final String EXTRA_resultsType = "resultsType";
     private ArrayList<Result> resultsList = new ArrayList<>();

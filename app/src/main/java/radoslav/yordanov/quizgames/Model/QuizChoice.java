@@ -3,9 +3,6 @@ package radoslav.yordanov.quizgames.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by radoslav on 4/16/16.
- */
 public class QuizChoice implements Parcelable {
     private int choiceId;
     private String choice;

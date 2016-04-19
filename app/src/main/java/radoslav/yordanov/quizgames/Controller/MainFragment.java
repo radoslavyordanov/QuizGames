@@ -8,9 +8,6 @@ import android.view.ViewGroup;
 
 import radoslav.yordanov.quizgames.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class MainFragment extends Fragment {
 
     public MainFragment() {

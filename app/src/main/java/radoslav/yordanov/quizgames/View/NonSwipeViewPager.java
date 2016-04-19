@@ -5,9 +5,6 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-/**
- * Created by radoslav on 4/17/16.
- */
 public class NonSwipeViewPager extends ViewPager {
     public NonSwipeViewPager(Context context) {
         super(context);

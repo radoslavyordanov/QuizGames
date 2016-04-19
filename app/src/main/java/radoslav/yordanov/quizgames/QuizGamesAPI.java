@@ -11,9 +11,6 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
-/**
- * Created by radoslav on 4/15/16.
- */
 public interface QuizGamesAPI {
 
     @Headers({

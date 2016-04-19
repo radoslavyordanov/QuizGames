@@ -9,9 +9,6 @@ import java.util.ArrayList;
 import radoslav.yordanov.quizgames.Controller.QuizChoiceFragment;
 import radoslav.yordanov.quizgames.Model.Quiz;
 
-/**
- * Created by radoslav on 4/16/16.
- */
 public class QuizAdapter extends FragmentStatePagerAdapter {
     private ArrayList<Quiz> quizList;
 

@@ -2,9 +2,6 @@ package radoslav.yordanov.quizgames.Model;
 
 import java.util.ArrayList;
 
-/**
- * Created by radoslav on 4/16/16.
- */
 public class Quiz {
     private int quizId;
     private String quizImage;

@@ -1,7 +1,6 @@
 package radoslav.yordanov.quizgames.Adapter;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +12,6 @@ import java.util.ArrayList;
 import radoslav.yordanov.quizgames.Model.Result;
 import radoslav.yordanov.quizgames.R;
 
-/**
- * Created by radoslav on 4/19/16.
- */
 public class TopScoresAdapter extends ArrayAdapter<Result> {
     private ArrayList<Result> resultsList;
     private LayoutInflater vi;

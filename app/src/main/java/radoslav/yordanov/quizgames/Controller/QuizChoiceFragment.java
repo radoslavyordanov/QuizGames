@@ -14,11 +14,6 @@ import java.util.Collections;
 import radoslav.yordanov.quizgames.Model.QuizChoice;
 import radoslav.yordanov.quizgames.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link QuizChoiceFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class QuizChoiceFragment extends Fragment {
     private static final String QUIZ_CHOICES = "QUIZ_CHOICES";
     private static final String QUIZ_IMAGE = "QUIZ_IMAGE";
@@ -52,7 +47,8 @@ public class QuizChoiceFragment extends Fragment {
         if (getArguments() != null) {
             quizImage = getArguments().getString(QUIZ_IMAGE);
             quizChoices = getArguments().getParcelableArrayList(QUIZ_CHOICES);
-            Collections.shuffle(quizChoices);
+            if (quizChoices != null)
+                Collections.shuffle(quizChoices);
         }
     }
 
