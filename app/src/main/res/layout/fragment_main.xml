@@ -7,7 +7,6 @@
     <Button
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_help_black_24dp"
         android:onClick="onPlayClick"
         android:text="@string/play" />
 
