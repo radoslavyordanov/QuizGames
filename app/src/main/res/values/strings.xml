@@ -28,4 +28,6 @@
     <string name="nicknameEmpty">Nickname can\'t be empty. Please try again.</string>
     <string name="cancel">Cancel</string>
     <string name="scoreSubmitted">Score submitted successfully!</string>
+
+
 </resources>

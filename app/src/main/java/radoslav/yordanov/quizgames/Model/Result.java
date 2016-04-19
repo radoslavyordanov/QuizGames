@@ -6,7 +6,7 @@ package radoslav.yordanov.quizgames.Model;
 public class Result {
     private String name;
     private int score;
-    private long date;
+    private String date;
     private String type;
 
     public String getName() {
@@ -25,11 +25,11 @@ public class Result {
         this.score = score;
     }
 
-    public long getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(long date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
