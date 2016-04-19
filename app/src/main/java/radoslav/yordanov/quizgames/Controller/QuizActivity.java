@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import radoslav.yordanov.quizgames.Adapter.QuizAdapter;
@@ -172,6 +173,7 @@ public class QuizActivity extends AppCompatActivity {
             super.onPostExecute(result);
             if (result) {
                 //success
+                Collections.shuffle(quizList);
                 mViewPager.setAdapter(new QuizAdapter(getSupportFragmentManager(), quizList));
                 final Thread t = new Thread(new RepeatingThread());
                 t.start();

@@ -20,7 +20,6 @@ import java.util.Date;
 import java.util.List;
 
 import radoslav.yordanov.quizgames.Adapter.TopScoresAdapter;
-import radoslav.yordanov.quizgames.Model.QuizChoice;
 import radoslav.yordanov.quizgames.Model.Result;
 import radoslav.yordanov.quizgames.QuizGamesAPI;
 import radoslav.yordanov.quizgames.QuizGamesApplication;

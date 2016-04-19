@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import radoslav.yordanov.quizgames.Model.QuizChoice;
 import radoslav.yordanov.quizgames.R;
@@ -51,7 +52,7 @@ public class QuizChoiceFragment extends Fragment {
         if (getArguments() != null) {
             quizImage = getArguments().getString(QUIZ_IMAGE);
             quizChoices = getArguments().getParcelableArrayList(QUIZ_CHOICES);
-
+            Collections.shuffle(quizChoices);
         }
     }
 
