@@ -33,6 +33,7 @@ public class QuizActivity extends AppCompatActivity {
     private static final int MAX_TIME = 20;
     private static final int MAX_POINTS = 100;
     private int score = 0;
+    private int correctAnswers = 0;
     private Resources res;
     private NonSwipeViewPager mViewPager;
     private ArrayList<Quiz> quizList;
@@ -87,6 +88,7 @@ public class QuizActivity extends AppCompatActivity {
     public void onSelectionClick(View view) {
         if ((int) view.getTag() == 1) {
             score += (MAX_POINTS / MAX_TIME) * (MAX_TIME - stopWatch.getElapsedTimeSecs());
+            correctAnswers++;
             String scoreText = String.format(res.getString(R.string.score), score);
             scoreTV.setText(scoreText);
         }
@@ -95,6 +97,7 @@ public class QuizActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ScoreActivity.class);
             intent.putExtra(ScoreActivity.EXTRA_score, score);
             intent.putExtra(ScoreActivity.EXTRA_quizType, quizType);
+            intent.putExtra(ScoreActivity.EXTRA_correctAnswers, correctAnswers);
             TaskStackBuilder sBuilder = TaskStackBuilder.create(this);
             sBuilder.addParentStack(ScoreActivity.class);
             sBuilder.addNextIntent(intent);
@@ -197,6 +200,7 @@ public class QuizActivity extends AppCompatActivity {
                     Intent intent = new Intent(QuizActivity.this, ScoreActivity.class);
                     intent.putExtra(ScoreActivity.EXTRA_score, score);
                     intent.putExtra(ScoreActivity.EXTRA_quizType, quizType);
+                    intent.putExtra(ScoreActivity.EXTRA_correctAnswers, correctAnswers);
                     TaskStackBuilder sBuilder = TaskStackBuilder.create(QuizActivity.this);
                     sBuilder.addParentStack(ScoreActivity.class);
                     sBuilder.addNextIntent(intent);

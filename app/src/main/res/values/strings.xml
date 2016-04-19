@@ -20,7 +20,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Score Activity -->
-    <string name="scoreResult">Your score is:\n %d</string>
+    <string name="scoreResult">Your score is %d.</string>
+    <string name="answeredQuestions">You have answered %d questions.</string>
     <string name="submitScore">Submit</string>
     <string name="enterNickname">Enter nickname:</string>
     <string name="loading">Loading. Please wait...</string>

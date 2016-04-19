@@ -12,8 +12,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:lines="2"
         android:text="@string/scoreResult"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/answeredQuestions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:lines="2"
+        android:text="@string/answeredQuestions"
         android:textSize="30sp" />
 
     <Button

@@ -30,6 +30,7 @@ public class ScoreActivity extends AppCompatActivity {
 
     public static final String EXTRA_score = "score";
     public static final String EXTRA_quizType = "quizType";
+    public static final String EXTRA_correctAnswers = "correctAnswers";
     private int score;
     private String quizType;
     private float scale;
@@ -45,6 +46,12 @@ public class ScoreActivity extends AppCompatActivity {
         if (scoreResult != null) {
             String scoreText = String.format(getResources().getString(R.string.scoreResult), score);
             scoreResult.setText(scoreText);
+        }
+        TextView answeredQuestions = (TextView) findViewById(R.id.answeredQuestions);
+        int correctAnswers = getIntent().getIntExtra(EXTRA_correctAnswers, 0);
+        if (answeredQuestions != null) {
+            String ansQuestionsText = String.format(getResources().getString(R.string.answeredQuestions), correctAnswers);
+            answeredQuestions.setText(ansQuestionsText);
         }
         scale = getResources().getDisplayMetrics().density;
     }
