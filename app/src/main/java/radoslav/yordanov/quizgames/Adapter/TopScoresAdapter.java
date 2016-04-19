@@ -1,6 +1,7 @@
 package radoslav.yordanov.quizgames.Adapter;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,6 @@ public class TopScoresAdapter extends ArrayAdapter<Result> {
             v = vi.inflate(Resource, null);
             holder.name = (TextView) v.findViewById(R.id.name);
             holder.score = (TextView) v.findViewById(R.id.score);
-            holder.type = (TextView) v.findViewById(R.id.type);
             holder.date = (TextView) v.findViewById(R.id.date);
             v.setTag(holder);
         } else {
@@ -54,7 +54,6 @@ public class TopScoresAdapter extends ArrayAdapter<Result> {
 
         holder.name.setText(resultsList.get(position).getName());
         holder.score.setText(String.valueOf(resultsList.get(position).getScore()));
-        holder.type.setText(resultsList.get(position).getType());
         holder.date.setText(resultsList.get(position).getDate());
 
         return v;
@@ -67,7 +66,6 @@ public class TopScoresAdapter extends ArrayAdapter<Result> {
     static class ViewHolder {
         public TextView name;
         public TextView score;
-        public TextView type;
         public TextView date;
     }
 

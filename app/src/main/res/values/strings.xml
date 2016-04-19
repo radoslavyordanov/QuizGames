@@ -29,5 +29,16 @@
     <string name="cancel">Cancel</string>
     <string name="scoreSubmitted">Score submitted successfully!</string>
 
+    <!-- TopScoresViewPagerAdapter -->
+    <!-- Top Scores tabs -->
+    <string-array name="topScoresTabs">
+        <item>Cars</item>
+        <item>Logos</item>
+        <item>Cities</item>
+        <item>All</item>
+    </string-array>
 
+    <!-- TopScores row -->
+    <string name="nameRow">Name:</string>
+    <string name="scoreRow">Score:</string>
 </resources>

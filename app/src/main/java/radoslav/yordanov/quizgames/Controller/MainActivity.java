@@ -31,12 +31,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onTopScoresClick(View view) {
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
-        ft.replace(R.id.activity_main, new TopScoresFragment());
-        ft.addToBackStack("qul;iz");
-        ft.commit();
+        Intent intent = new Intent(this, TopScoresActivity.class);
+        startActivity(intent);
     }
 
     public void onAboutClick(View view) {

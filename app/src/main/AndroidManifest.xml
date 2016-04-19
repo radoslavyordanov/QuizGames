@@ -36,6 +36,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Controller.MainActivity" />
         </activity>
+        <activity android:name=".Controller.TopScoresActivity"></activity>
     </application>
 
 </manifest>
