@@ -24,6 +24,7 @@ import radoslav.yordanov.quizgames.Model.Result;
 import radoslav.yordanov.quizgames.QuizGamesAPI;
 import radoslav.yordanov.quizgames.QuizGamesApplication;
 import radoslav.yordanov.quizgames.R;
+import radoslav.yordanov.quizgames.View.NetworkDialog;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -102,7 +103,7 @@ public class TopScoresFragment extends Fragment {
             if (result) {
                 listView.setAdapter(new TopScoresAdapter(getActivity(), R.layout.topscores_row, resultsList));
             } else {
-                // false show dialog
+                new NetworkDialog().show(getActivity().getFragmentManager(), "networkDialog");
             }
         }
 

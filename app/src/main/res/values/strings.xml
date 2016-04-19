@@ -47,4 +47,7 @@
     <string name="developedBy">Developed by: Radoslav Yordanov</string>
     <string name="contact">Contact: radikan94@gmail.com</string>
     <string name="rights">All rights reserved 2016.</string>
+
+    <!-- Network Dialog -->
+    <string name="connectionMsg">Can\'t connect to the server. Please try again.</string>
 </resources>

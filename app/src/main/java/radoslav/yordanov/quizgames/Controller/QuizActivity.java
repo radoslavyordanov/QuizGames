@@ -23,6 +23,7 @@ import radoslav.yordanov.quizgames.QuizGamesAPI;
 import radoslav.yordanov.quizgames.QuizGamesApplication;
 import radoslav.yordanov.quizgames.R;
 import radoslav.yordanov.quizgames.Util.Stopwatch;
+import radoslav.yordanov.quizgames.View.NetworkDialog;
 import radoslav.yordanov.quizgames.View.NonSwipeViewPager;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -178,7 +179,7 @@ public class QuizActivity extends AppCompatActivity {
                 final Thread t = new Thread(new RepeatingThread());
                 t.start();
             } else {
-                // false show dialog
+                new NetworkDialog().show(getFragmentManager(), "networkDialog");
             }
         }
     }

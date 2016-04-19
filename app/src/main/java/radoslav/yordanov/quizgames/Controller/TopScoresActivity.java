@@ -21,7 +21,6 @@ public class TopScoresActivity extends AppCompatActivity {
             mPager.setAdapter(mPagerAdapter);
         }
 
-
         // Give the SlidingTabLayout the ViewPager, this must be done AFTER the ViewPager has had
         // it's PagerAdapter set.
         SlidingTabLayout mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);

@@ -23,6 +23,7 @@ import radoslav.yordanov.quizgames.Model.Result;
 import radoslav.yordanov.quizgames.QuizGamesAPI;
 import radoslav.yordanov.quizgames.QuizGamesApplication;
 import radoslav.yordanov.quizgames.R;
+import radoslav.yordanov.quizgames.View.NetworkDialog;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -139,7 +140,7 @@ public class ScoreActivity extends AppCompatActivity {
                         onBackPressed();
                         Toast.makeText(ScoreActivity.this, getResources().getString(R.string.scoreSubmitted), Toast.LENGTH_LONG).show();
                     } else {
-                        // show fail dialog
+                        new NetworkDialog().show(getFragmentManager(), "networkDialog");
                     }
                 }
             }, 1000);
