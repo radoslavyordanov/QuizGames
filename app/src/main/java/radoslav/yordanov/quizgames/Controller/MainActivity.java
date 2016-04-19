@@ -36,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onAboutClick(View view) {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
+        ft.replace(R.id.activity_main, new AboutFragment());
+        ft.addToBackStack("quiz");
+        ft.commit();
     }
 
     public void onCarsQuizClick(View view) {
@@ -46,9 +52,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLogosQuizClick(View view) {
+        Intent intent = new Intent(this, QuizActivity.class);
+        intent.putExtra(QuizActivity.EXTRA_quizType, "logos");
+        startActivity(intent);
     }
 
     public void onCitiesQuizClick(View view) {
+        Intent intent = new Intent(this, QuizActivity.class);
+        intent.putExtra(QuizActivity.EXTRA_quizType, "cities");
+        startActivity(intent);
     }
 
 

@@ -41,4 +41,10 @@
     <!-- TopScores row -->
     <string name="nameRow">Name:</string>
     <string name="scoreRow">Score:</string>
+
+    <!-- About fragment -->
+    <string name="quizVer">Quiz Games 1.0.0</string>
+    <string name="developedBy">Developed by: Radoslav Yordanov</string>
+    <string name="contact">Contact: radikan94@gmail.com</string>
+    <string name="rights">All rights reserved 2016.</string>
 </resources>
