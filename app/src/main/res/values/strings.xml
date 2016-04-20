@@ -9,7 +9,7 @@
     <string name="carsQuiz">Cars quiz</string>
     <string name="logosQuiz">Logos quiz</string>
     <string name="citiesQuiz">Cities quiz</string>
-    
+
     <!-- Activity Quiz -->
     <string name="timeLeft">Time left: %d</string>
     <string name="score">Score: %d</string>
