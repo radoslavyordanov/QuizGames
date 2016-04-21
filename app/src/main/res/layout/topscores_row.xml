@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
    Copyright 2016 Radoslav Yordanov
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,6 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/nameRow"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -38,7 +38,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="" />
+            android:text=""
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -49,6 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/scoreRow"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -56,11 +58,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
+            android:textSize="20sp"
             android:textStyle="italic" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/date"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="20sp" />
 </LinearLayout>
