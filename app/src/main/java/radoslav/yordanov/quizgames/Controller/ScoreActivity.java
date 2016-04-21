@@ -130,22 +130,15 @@ public class ScoreActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(final Boolean result) {
             super.onPostExecute(result);
-
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    progressDialog.dismiss();
-                    if (result) {
-                        onBackPressed();
-                        Toast.makeText(ScoreActivity.this, getResources().getString(R.string.scoreSubmitted), Toast.LENGTH_LONG).show();
-                    } else {
-                        new NetworkDialog().show(getFragmentManager(), "networkDialog");
-                    }
-                }
-            }, 1000);
+            progressDialog.dismiss();
+            if (result) {
+                onBackPressed();
+                Toast.makeText(ScoreActivity.this, getResources().getString(R.string.scoreSubmitted), Toast.LENGTH_LONG).show();
+            } else
+                new NetworkDialog().show(getFragmentManager(), "networkDialog");
         }
-
     }
 
 }
+
+
