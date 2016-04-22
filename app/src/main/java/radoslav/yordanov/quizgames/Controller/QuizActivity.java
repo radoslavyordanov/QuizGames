@@ -8,6 +8,7 @@ import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -44,6 +45,7 @@ public class QuizActivity extends AppCompatActivity {
     private TextView stopWatchTV;
     private TextView scoreTV;
     private TextView questionPositionTV;
+    private ProgressBar spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class QuizActivity extends AppCompatActivity {
         res = getResources();
         mViewPager = (NonSwipeViewPager) findViewById(R.id.quizPager);
         quizType = getIntent().getStringExtra(EXTRA_quizType);
+        spinner = (ProgressBar) findViewById(R.id.progressBar);
         new QuizTask().execute(quizType);
         stopWatchTV = (TextView) findViewById(R.id.stopWatchTV);
         String timeLeftText = String.format(res.getString(R.string.timeLeft), 0);
@@ -116,6 +119,12 @@ public class QuizActivity extends AppCompatActivity {
 
     private class QuizTask extends AsyncTask<String, Void, Boolean> {
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            spinner.setVisibility(View.VISIBLE);
+        }
+
+        @Override
         protected Boolean doInBackground(String... params) {
 
 
@@ -172,6 +181,7 @@ public class QuizActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
+            spinner.setVisibility(View.GONE);
             if (result) {
                 //success
                 Collections.shuffle(quizList);

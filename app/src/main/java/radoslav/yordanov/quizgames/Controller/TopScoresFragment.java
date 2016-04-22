@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import org.ocpsoft.prettytime.PrettyTime;
 
@@ -32,6 +33,7 @@ public class TopScoresFragment extends Fragment {
     public static final String EXTRA_resultsType = "resultsType";
     private ArrayList<Result> resultsList = new ArrayList<>();
     private ListView listView;
+    private ProgressBar spinner;
 
     public TopScoresFragment() {
         // Required empty public constructor
@@ -58,11 +60,18 @@ public class TopScoresFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_topscores, container, false);
         listView = (ListView) rootView.findViewById(R.id.topScoresList);
+        spinner = (ProgressBar) rootView.findViewById(R.id.progressBar);
         new ResultTask().execute(getArguments().getString(EXTRA_resultsType));
         return rootView;
     }
 
     private class ResultTask extends AsyncTask<String, Void, Boolean> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            spinner.setVisibility(View.VISIBLE);
+        }
+
         @Override
         protected Boolean doInBackground(String... params) {
 
@@ -97,6 +106,7 @@ public class TopScoresFragment extends Fragment {
         @Override
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
+            spinner.setVisibility(View.GONE);
             if (result) {
                 listView.setAdapter(new TopScoresAdapter(getActivity(), R.layout.topscores_row, resultsList));
             } else {
