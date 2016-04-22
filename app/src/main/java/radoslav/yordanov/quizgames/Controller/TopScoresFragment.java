@@ -87,7 +87,7 @@ public class TopScoresFragment extends Fragment {
 
                     return true;
                 }
-            } catch (IOException e) {
+            } catch (IOException | IllegalStateException e) {
                 return false;
             }
 

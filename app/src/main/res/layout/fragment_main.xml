@@ -21,20 +21,20 @@
     android:orientation="vertical">
 
     <Button
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:onClick="onPlayClick"
         android:text="@string/play" />
 
     <Button
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:onClick="onTopScoresClick"
         android:text="@string/topScores" />
 
     <Button
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:onClick="onAboutClick"
         android:text="@string/about" />
 

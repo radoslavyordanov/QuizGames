@@ -23,20 +23,20 @@
     tools:context=".Controller.QuizSelectionFragment">
 
     <Button
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:onClick="onCarsQuizClick"
         android:text="@string/carsQuiz" />
 
     <Button
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:onClick="onLogosQuizClick"
         android:text="@string/logosQuiz" />
 
     <Button
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:onClick="onCitiesQuizClick"
         android:text="@string/citiesQuiz" />
 </LinearLayout>

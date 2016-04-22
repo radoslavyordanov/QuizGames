@@ -162,7 +162,7 @@ public class QuizActivity extends AppCompatActivity {
                     quizList.add(quizModel);
                     return true;
                 }
-            } catch (IOException e) {
+            } catch (IOException | IllegalStateException e) {
                 return false;
             }
 
