@@ -1,5 +1,6 @@
 package radoslav.yordanov.quizgames.Controller;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +9,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.utils.StorageUtils;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -20,6 +29,8 @@ public class QuizChoiceFragment extends Fragment {
 
     private ArrayList<QuizChoice> quizChoices;
     private String quizImage;
+    private ImageLoader imageLoader;
+    private DisplayImageOptions defaultOptions;
 
     public QuizChoiceFragment() {
         // Required empty public constructor
@@ -50,6 +61,14 @@ public class QuizChoiceFragment extends Fragment {
             if (quizChoices != null)
                 Collections.shuffle(quizChoices);
         }
+        // Default options
+        defaultOptions = new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .imageScaleType(ImageScaleType.EXACTLY)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .build();
+        imageLoader = ImageLoader.getInstance();
     }
 
     @Override
@@ -59,8 +78,7 @@ public class QuizChoiceFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_quiz_choice, container, false);
 
         ImageView questionImg = (ImageView) rootView.findViewById(R.id.questionImg);
-        int id = getResources().getIdentifier(quizImage, "drawable", getActivity().getPackageName());
-        questionImg.setImageResource(id);
+        imageLoader.displayImage(quizImage, questionImg, defaultOptions);
 
         Button selection1 = (Button) rootView.findViewById(R.id.selection1);
         Button selection2 = (Button) rootView.findViewById(R.id.selection2);

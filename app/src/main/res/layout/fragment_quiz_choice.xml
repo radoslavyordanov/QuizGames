@@ -25,8 +25,8 @@
         android:id="@+id/questionImg"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/cars_bugatti_veyron" />
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp" />
 
     <Button
         android:id="@+id/selection1"

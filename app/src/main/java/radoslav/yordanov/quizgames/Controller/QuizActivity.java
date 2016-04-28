@@ -2,6 +2,7 @@ package radoslav.yordanov.quizgames.Controller;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v4.app.TaskStackBuilder;
@@ -11,6 +12,14 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.utils.StorageUtils;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -66,27 +75,19 @@ public class QuizActivity extends AppCompatActivity {
         String questionPos = String.format(res.getString(R.string.questionPosition), 1, 20);
         questionPositionTV.setText(questionPos);
 
-     /*   Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (stopWatchView != null) {
-                            if (stopWatch.getElapsedTimeSecs() == 20) {
-                                mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
-                                stopWatch = new Stopwatch();
-                                stopWatch.start();
-                            }
-                            stopWatchView.setText(String.valueOf(20 - stopWatch.getElapsedTimeSecs()));
-                        }
-                    }
-                });
-
-            }
-        }, 0, 1000);*/
-
+        // Create global configuration and initialize ImageLoader with this config
+        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .imageScaleType(ImageScaleType.NONE)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .build();
+        File cacheDir = StorageUtils.getCacheDirectory(this);
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
+                .diskCache(new UnlimitedDiskCache(cacheDir)) // default
+                .defaultDisplayImageOptions(defaultOptions)
+                .build();
+        ImageLoader.getInstance().init(config);
 
     }
 

@@ -23,7 +23,7 @@ public interface QuizGamesAPI {
             "content-type: application/json"
     })
     @POST("/results/{quizType}")
-    Call<Void> postResult(@Path("quizType") String quizType, @Body Result result);
+    Call<Void>  postResult(@Path("quizType") String quizType, @Body Result result);
 
     @Headers({
             "content-type: application/json"
