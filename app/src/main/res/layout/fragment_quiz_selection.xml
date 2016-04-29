@@ -20,7 +20,7 @@
     android:layout_height="match_parent"
     android:gravity="center_vertical|center_horizontal"
     android:orientation="vertical"
-    tools:context=".Controller.QuizSelectionFragment">
+    tools:context=".controller.QuizSelectionFragment">
 
     <Button
         android:layout_width="150dp"

@@ -1,4 +1,4 @@
-package radoslav.yordanov.quizgames.Model;
+package radoslav.yordanov.quizgames.model;
 
 public class QuizAPI {
     private int quiz_id;

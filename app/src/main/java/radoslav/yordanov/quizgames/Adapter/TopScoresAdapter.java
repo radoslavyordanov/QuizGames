@@ -1,4 +1,4 @@
-package radoslav.yordanov.quizgames.Adapter;
+package radoslav.yordanov.quizgames.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import radoslav.yordanov.quizgames.Model.Result;
+import radoslav.yordanov.quizgames.model.Result;
 import radoslav.yordanov.quizgames.R;
 
 public class TopScoresAdapter extends ArrayAdapter<Result> {

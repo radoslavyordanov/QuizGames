@@ -1,4 +1,4 @@
-package radoslav.yordanov.quizgames.View;
+package radoslav.yordanov.quizgames.view;
 
 import android.content.Context;
 import android.graphics.Canvas;

@@ -1,4 +1,4 @@
-package radoslav.yordanov.quizgames.Model;
+package radoslav.yordanov.quizgames.model;
 
 import java.util.ArrayList;
 

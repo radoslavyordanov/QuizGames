@@ -2,8 +2,9 @@ package radoslav.yordanov.quizgames;
 
 import java.util.List;
 
-import radoslav.yordanov.quizgames.Model.QuizAPI;
-import radoslav.yordanov.quizgames.Model.Result;
+import radoslav.yordanov.quizgames.model.QuizAPI;
+import radoslav.yordanov.quizgames.model.Result;
+import radoslav.yordanov.quizgames.model.User;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -30,4 +31,7 @@ public interface QuizGamesAPI {
     })
     @GET("/results/{resultType}")
     Call<List<Result>> getResults(@Path("resultType") String resultType);
+
+    @POST("/login")
+    Call<User> postLogin(@Body User user);
 }

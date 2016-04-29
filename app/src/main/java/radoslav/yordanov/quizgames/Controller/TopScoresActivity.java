@@ -1,12 +1,12 @@
-package radoslav.yordanov.quizgames.Controller;
+package radoslav.yordanov.quizgames.controller;
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import radoslav.yordanov.quizgames.Adapter.TopScoresViewPagerAdapter;
+import radoslav.yordanov.quizgames.adapter.TopScoresViewPagerAdapter;
 import radoslav.yordanov.quizgames.R;
-import radoslav.yordanov.quizgames.View.SlidingTabLayout;
+import radoslav.yordanov.quizgames.view.SlidingTabLayout;
 
 public class TopScoresActivity extends AppCompatActivity {
 

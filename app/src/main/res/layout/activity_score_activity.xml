@@ -20,7 +20,7 @@
     android:background="@drawable/dice_resource"
     android:gravity="center_vertical|center_horizontal"
     android:orientation="vertical"
-    tools:context=".Controller.ScoreActivity">
+    tools:context=".controller.ScoreActivity">
 
     <TextView
         android:id="@+id/scoreResult"

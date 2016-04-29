@@ -1,4 +1,4 @@
-package radoslav.yordanov.quizgames.Controller;
+package radoslav.yordanov.quizgames.controller;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -9,18 +9,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.utils.StorageUtils;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import radoslav.yordanov.quizgames.Model.QuizChoice;
+import radoslav.yordanov.quizgames.model.QuizChoice;
 import radoslav.yordanov.quizgames.R;
 
 public class QuizChoiceFragment extends Fragment {

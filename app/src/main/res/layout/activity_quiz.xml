@@ -53,7 +53,7 @@
                 android:textSize="20sp" />
         </RelativeLayout>
 
-        <radoslav.yordanov.quizgames.View.NonSwipeViewPager
+        <radoslav.yordanov.quizgames.view.NonSwipeViewPager
             android:id="@+id/quizPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

@@ -1,4 +1,4 @@
-package radoslav.yordanov.quizgames.Util;
+package radoslav.yordanov.quizgames.util;
 
 public class Stopwatch {
     private long startTime = 0;

@@ -1,4 +1,4 @@
-package radoslav.yordanov.quizgames.Controller;
+package radoslav.yordanov.quizgames.controller;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -25,16 +25,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import radoslav.yordanov.quizgames.Adapter.QuizAdapter;
-import radoslav.yordanov.quizgames.Model.Quiz;
-import radoslav.yordanov.quizgames.Model.QuizAPI;
-import radoslav.yordanov.quizgames.Model.QuizChoice;
+import radoslav.yordanov.quizgames.adapter.QuizAdapter;
+import radoslav.yordanov.quizgames.model.Quiz;
+import radoslav.yordanov.quizgames.model.QuizAPI;
+import radoslav.yordanov.quizgames.model.QuizChoice;
 import radoslav.yordanov.quizgames.QuizGamesAPI;
 import radoslav.yordanov.quizgames.QuizGamesApplication;
 import radoslav.yordanov.quizgames.R;
-import radoslav.yordanov.quizgames.Util.Stopwatch;
-import radoslav.yordanov.quizgames.View.NetworkDialog;
-import radoslav.yordanov.quizgames.View.NonSwipeViewPager;
+import radoslav.yordanov.quizgames.util.Stopwatch;
+import radoslav.yordanov.quizgames.view.NetworkDialog;
+import radoslav.yordanov.quizgames.view.NonSwipeViewPager;
 import retrofit2.Call;
 import retrofit2.Response;
 

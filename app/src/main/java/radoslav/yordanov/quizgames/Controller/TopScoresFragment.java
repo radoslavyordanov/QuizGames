@@ -1,4 +1,4 @@
-package radoslav.yordanov.quizgames.Controller;
+package radoslav.yordanov.quizgames.controller;
 
 
 import android.os.AsyncTask;
@@ -20,12 +20,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import radoslav.yordanov.quizgames.Adapter.TopScoresAdapter;
-import radoslav.yordanov.quizgames.Model.Result;
+import radoslav.yordanov.quizgames.adapter.TopScoresAdapter;
+import radoslav.yordanov.quizgames.model.Result;
 import radoslav.yordanov.quizgames.QuizGamesAPI;
 import radoslav.yordanov.quizgames.QuizGamesApplication;
 import radoslav.yordanov.quizgames.R;
-import radoslav.yordanov.quizgames.View.NetworkDialog;
+import radoslav.yordanov.quizgames.view.NetworkDialog;
 import retrofit2.Call;
 import retrofit2.Response;
 

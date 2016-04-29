@@ -1,4 +1,4 @@
-package radoslav.yordanov.quizgames.Controller;
+package radoslav.yordanov.quizgames.controller;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

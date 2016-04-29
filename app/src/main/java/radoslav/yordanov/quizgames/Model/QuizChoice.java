@@ -1,4 +1,4 @@
-package radoslav.yordanov.quizgames.Model;
+package radoslav.yordanov.quizgames.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

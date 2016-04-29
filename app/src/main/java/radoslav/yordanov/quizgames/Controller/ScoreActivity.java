@@ -1,10 +1,9 @@
-package radoslav.yordanov.quizgames.Controller;
+package radoslav.yordanov.quizgames.controller;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
-import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,11 +18,11 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
-import radoslav.yordanov.quizgames.Model.Result;
+import radoslav.yordanov.quizgames.model.Result;
 import radoslav.yordanov.quizgames.QuizGamesAPI;
 import radoslav.yordanov.quizgames.QuizGamesApplication;
 import radoslav.yordanov.quizgames.R;
-import radoslav.yordanov.quizgames.View.NetworkDialog;
+import radoslav.yordanov.quizgames.view.NetworkDialog;
 import retrofit2.Call;
 import retrofit2.Response;
 

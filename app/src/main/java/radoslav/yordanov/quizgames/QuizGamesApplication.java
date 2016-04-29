@@ -12,8 +12,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class QuizGamesApplication extends Application {
     private static QuizGamesAPI quizGamesService;
-   //private static final String endpoint = "http://quizgames-ryordanov.rhcloud.com";
-   private static final String endpoint = "http://46.40.127.6:3000";
+    //private static final String endpoint = "http://quizgames-ryordanov.rhcloud.com";
+    private static final String endpoint = "http://46.40.127.6:3000";
+
+    public static final String USER_ID_PREF = "USER_ID";
+    public static int userId;
 
     public static QuizGamesAPI getQuizGamesService() {
 

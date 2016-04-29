@@ -1,11 +1,11 @@
-package radoslav.yordanov.quizgames.Adapter;
+package radoslav.yordanov.quizgames.adapter;
 
 import android.content.res.Resources;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
-import radoslav.yordanov.quizgames.Controller.TopScoresFragment;
+import radoslav.yordanov.quizgames.controller.TopScoresFragment;
 import radoslav.yordanov.quizgames.R;
 
 public class TopScoresViewPagerAdapter extends FragmentStatePagerAdapter {

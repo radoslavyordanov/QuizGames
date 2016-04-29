@@ -46,4 +46,12 @@
 
     <!-- Network Dialog -->
     <string name="connectionMsg">Can\'t connect to the server. Please try again.</string>
+
+    <!-- Login Activity -->
+    <string name="username">Username:</string>
+    <string name="password">Password:</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="rememberMe">Remember me?</string>
+    <string name="invalidCredentials">Invalid username or password. Please try again.</string>
 </resources>
