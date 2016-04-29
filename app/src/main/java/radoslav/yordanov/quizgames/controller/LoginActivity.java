@@ -1,5 +1,6 @@
 package radoslav.yordanov.quizgames.controller;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,7 +21,6 @@ import radoslav.yordanov.quizgames.QuizGamesAPI;
 import radoslav.yordanov.quizgames.QuizGamesApplication;
 import radoslav.yordanov.quizgames.R;
 import radoslav.yordanov.quizgames.model.User;
-import radoslav.yordanov.quizgames.view.InvalidCredentialsDialog;
 import radoslav.yordanov.quizgames.view.NetworkDialog;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private CheckBox rememberMe;
+    private Button login;
     private SharedPreferences appPreferences;
     private User user;
 
@@ -48,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         rememberMe = (CheckBox) findViewById(R.id.rememberMe);
+        login = (Button) findViewById(R.id.login);
 
         appPreferences = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
         int userId = appPreferences.getInt(QuizGamesApplication.USER_ID_PREF, -1);
@@ -60,7 +63,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginClick(View view) {
+        login.setEnabled(false);
         new LoginTask().execute(username.getText().toString(), password.getText().toString());
+    }
+
+    public void onRegisterClick(View view) {
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private class LoginTask extends AsyncTask<String, Void, Boolean> {
@@ -90,10 +100,14 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(final Boolean result) {
             super.onPostExecute(result);
+            login.setEnabled(true);
             if (result) {
-                if (invalidCredentials)
-                    new InvalidCredentialsDialog().show(getFragmentManager(), "invalidCredentialsDialog");
-                else {
+                if (invalidCredentials) {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this);
+                    dialog.setMessage(getResources().getString(R.string.invalidCredentials));
+                    dialog.setPositiveButton("Okay", null);
+                    dialog.show();
+                } else {
                     if (rememberMe.isChecked()) {
                         appPreferences.edit().putInt(QuizGamesApplication.USER_ID_PREF, user.getId()).apply();
                     }

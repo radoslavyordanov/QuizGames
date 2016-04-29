@@ -76,33 +76,27 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/rememberMe"
-            android:textColor="@android:color/white" />
+            android:text="@string/passwordConfirm"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        <CheckBox
-            android:id="@+id/rememberMe"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/passwordConfirm"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:checked="true" />
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:textColor="@android:color/white"
+            android:theme="@style/MyEditTextTheme" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onLoginClick"
-            android:text="@string/login" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onRegisterClick"
-            android:text="@string/register" />
-    </LinearLayout>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:onClick="onSubmitClick"
+        android:text="@string/submitScore" />
 </LinearLayout>

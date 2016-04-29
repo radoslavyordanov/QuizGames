@@ -58,4 +58,10 @@
     <string name="logoutAsk">Are you sure you want to logout?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+
+    <!-- Register Activity -->
+    <string name="passwordConfirm">Confirm pass:</string>
+    <string name="passwordDifferent">Password is different. Please try again.</string>
+    <string name="passwordEmpty">Password can\'t be empty. Please try again.</string>
+    <string name="usernameExists">Username exists. Please try again.</string>
 </resources>

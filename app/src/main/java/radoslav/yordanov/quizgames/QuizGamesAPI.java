@@ -34,4 +34,7 @@ public interface QuizGamesAPI {
 
     @POST("/login")
     Call<User> postLogin(@Body User user);
+
+    @POST("/register")
+    Call<User> postRegister(@Body User user);
 }
