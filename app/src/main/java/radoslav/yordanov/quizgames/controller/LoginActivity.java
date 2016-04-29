@@ -6,9 +6,12 @@ import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.io.IOException;
 
@@ -34,11 +37,22 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
+        password.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    onLoginClick(null);
+                    return true;
+                }
+                return false;
+            }
+        });
         rememberMe = (CheckBox) findViewById(R.id.rememberMe);
 
         appPreferences = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
         int userId = appPreferences.getInt(QuizGamesApplication.USER_ID_PREF, -1);
         if (userId != -1) {
+            QuizGamesApplication.userId = userId;
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();

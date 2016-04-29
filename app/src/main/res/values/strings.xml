@@ -54,4 +54,8 @@
     <string name="register">Register</string>
     <string name="rememberMe">Remember me?</string>
     <string name="invalidCredentials">Invalid username or password. Please try again.</string>
+    <string name="logout">Logout</string>
+    <string name="logoutAsk">Are you sure you want to logout?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
