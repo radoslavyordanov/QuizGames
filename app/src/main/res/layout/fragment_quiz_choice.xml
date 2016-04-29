@@ -52,4 +52,19 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:onClick="onSelectionClick" />
+
+    <EditText
+        android:id="@+id/answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="@string/typeAnswer"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/singleAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/submitScore"
+        android:visibility="gone" />
 </LinearLayout>

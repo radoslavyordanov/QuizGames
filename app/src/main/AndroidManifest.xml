@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.MainActivity"></activity>
+        <activity android:name=".controller.MainActivity" />
         <activity
             android:name=".controller.QuizActivity"
             android:parentActivityName=".controller.MainActivity"
@@ -43,7 +43,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".controller.MainActivity" />
         </activity>
-        <activity android:name=".controller.RegisterActivity"></activity>
+        <activity android:name=".controller.RegisterActivity" />
+        <activity android:name=".controller.AddQuizActivity" />
     </application>
 
 </manifest>

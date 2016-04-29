@@ -8,6 +8,7 @@ public class User {
     private int id;
     private String username;
     private String password;
+    private int user_roleId;
 
     public String getStatus() {
         return status;
@@ -39,5 +40,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getUser_roleId() {
+        return user_roleId;
+    }
+
+    public void setUser_roleId(int user_roleId) {
+        this.user_roleId = user_roleId;
     }
 }

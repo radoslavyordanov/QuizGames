@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         int userId = appPreferences.getInt(QuizGamesApplication.USER_ID_PREF, -1);
         if (userId != -1) {
             QuizGamesApplication.userId = userId;
+            QuizGamesApplication.userRoleId = appPreferences.getInt(QuizGamesApplication.USER_ROLE_ID, -1);
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -110,7 +111,10 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     if (rememberMe.isChecked()) {
                         appPreferences.edit().putInt(QuizGamesApplication.USER_ID_PREF, user.getId()).apply();
+                        appPreferences.edit().putInt(QuizGamesApplication.USER_ROLE_ID, user.getUser_roleId()).apply();
                     }
+                    QuizGamesApplication.userId = user.getId();
+                    QuizGamesApplication.userRoleId = user.getUser_roleId();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();

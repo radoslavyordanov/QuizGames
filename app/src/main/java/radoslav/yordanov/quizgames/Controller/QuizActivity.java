@@ -44,6 +44,7 @@ public class QuizActivity extends AppCompatActivity {
     private String quizType;
     private static final int MAX_TIME = 20;
     private static final int MAX_POINTS = 100;
+    private static final int MAX_QUESTIONS = 20;
     private int score = 0;
     private int correctAnswers = 0;
     private Resources res;
@@ -72,7 +73,7 @@ public class QuizActivity extends AppCompatActivity {
         String scoreText = String.format(res.getString(R.string.score), score);
         scoreTV.setText(scoreText);
         questionPositionTV = (TextView) findViewById(R.id.questionPositionTV);
-        String questionPos = String.format(res.getString(R.string.questionPosition), 1, 20);
+        String questionPos = String.format(res.getString(R.string.questionPosition), 1, MAX_QUESTIONS);
         questionPositionTV.setText(questionPos);
 
         // Create global configuration and initialize ImageLoader with this config
@@ -98,7 +99,7 @@ public class QuizActivity extends AppCompatActivity {
             String scoreText = String.format(res.getString(R.string.score), score);
             scoreTV.setText(scoreText);
         }
-        if (mViewPager.getCurrentItem() == quizList.size() - 1) {
+        if (mViewPager.getCurrentItem() == MAX_QUESTIONS - 1) {
             stopWatch.stop();
             Intent intent = new Intent(this, ScoreActivity.class);
             intent.putExtra(ScoreActivity.EXTRA_score, score);
@@ -110,7 +111,7 @@ public class QuizActivity extends AppCompatActivity {
             sBuilder.startActivities();
         } else {
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
-            String questionPos = String.format(res.getString(R.string.questionPosition), mViewPager.getCurrentItem() + 1, quizList.size());
+            String questionPos = String.format(res.getString(R.string.questionPosition), mViewPager.getCurrentItem() + 1, MAX_QUESTIONS);
             questionPositionTV.setText(questionPos);
             stopWatch = new Stopwatch();
             stopWatch.start();
@@ -209,7 +210,7 @@ public class QuizActivity extends AppCompatActivity {
                 stopWatch.start();
             }
             if (stopWatch.getElapsedTimeSecs() == MAX_TIME) {
-                if (mViewPager.getCurrentItem() == quizList.size() - 1) {
+                if (mViewPager.getCurrentItem() == MAX_QUESTIONS - 1) {
                     stopWatch.stop();
                     Intent intent = new Intent(QuizActivity.this, ScoreActivity.class);
                     intent.putExtra(ScoreActivity.EXTRA_score, score);
@@ -221,7 +222,7 @@ public class QuizActivity extends AppCompatActivity {
                     sBuilder.startActivities();
                 } else {
                     mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
-                    String questionPos = String.format(res.getString(R.string.questionPosition), mViewPager.getCurrentItem() + 1, quizList.size());
+                    String questionPos = String.format(res.getString(R.string.questionPosition), mViewPager.getCurrentItem() + 1, MAX_QUESTIONS);
                     questionPositionTV.setText(questionPos);
                     stopWatch = new Stopwatch();
                     stopWatch.start();
@@ -238,6 +239,33 @@ public class QuizActivity extends AppCompatActivity {
 
             mHandler.postDelayed(this, 1000);
         }
+    }
+
+    public void onSingleAnswerClick(View v, String answer) {
+        if (v.getTag().toString().toLowerCase().equals(answer.toLowerCase())) {
+            score += 150;
+            correctAnswers++;
+            String scoreText = String.format(res.getString(R.string.score), score);
+            scoreTV.setText(scoreText);
+        }
+        if (mViewPager.getCurrentItem() == MAX_QUESTIONS - 1) {
+            stopWatch.stop();
+            Intent intent = new Intent(this, ScoreActivity.class);
+            intent.putExtra(ScoreActivity.EXTRA_score, score);
+            intent.putExtra(ScoreActivity.EXTRA_quizType, quizType);
+            intent.putExtra(ScoreActivity.EXTRA_correctAnswers, correctAnswers);
+            TaskStackBuilder sBuilder = TaskStackBuilder.create(this);
+            sBuilder.addParentStack(ScoreActivity.class);
+            sBuilder.addNextIntent(intent);
+            sBuilder.startActivities();
+        } else {
+            mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+            String questionPos = String.format(res.getString(R.string.questionPosition), mViewPager.getCurrentItem() + 1, MAX_QUESTIONS);
+            questionPositionTV.setText(questionPos);
+            stopWatch = new Stopwatch();
+            stopWatch.start();
+        }
+
     }
 
 }

@@ -14,6 +14,7 @@
     <string name="timeLeft">Time left: %d</string>
     <string name="score">Score: %d</string>
     <string name="questionPosition">%1$d of %2$d</string>
+    <string name="typeAnswer">Type your answer here...</string>
 
     <!-- Score Activity -->
     <string name="scoreResult">Your score is %d.</string>
@@ -64,4 +65,32 @@
     <string name="passwordDifferent">Password is different. Please try again.</string>
     <string name="passwordEmpty">Password can\'t be empty. Please try again.</string>
     <string name="usernameExists">Username exists. Please try again.</string>
+
+    <string name="addContent">Add content</string>
+
+    <!-- Add quiz Activity -->
+    <string name="quizType">Quiz type:</string>
+    <string name="quizImg">Image url:</string>
+    <string-array name="quizTypes">
+        <item>Cars</item>
+        <item>Logos</item>
+        <item>Cities</item>
+    </string-array>
+    <string name="quizMultipleChoices">Multiple choices?</string>
+    <string name="quizAnswer">Answer:</string>
+    <string name="quizChoice1">Choice 1:</string>
+    <string name="quizChoice2">Choice 2:</string>
+    <string name="quizChoice3">Choice 3:</string>
+    <string name="quizChoice4">Choice 4:</string>
+    <string name="correctChoice">Correct choice:</string>
+    <string-array name="correctChoices">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string name="add">Add</string>
+    <string name="quizImgEmpty">Quiz image can\'t be empty. Please try again.</string>
+    <string name="quizAnswerEmpty">Quiz answer can\'t be empty. Please try again.</string>
+    <string name="quizChoiceEmpty">Quiz choice can\'t be empty. Please try again.</string>
 </resources>

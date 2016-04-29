@@ -91,6 +91,7 @@ public class TopScoresFragment extends Fragment {
                         String prettyTimeString = new PrettyTime().format(parseDateTime(responseList.get(i).getDate()));
                         resultModel.setDate(prettyTimeString);
                         resultModel.setType(responseList.get(i).getType());
+                        resultModel.setUser_id(responseList.get(i).getUser_id());
                         resultsList.add(resultModel);
                     }
 

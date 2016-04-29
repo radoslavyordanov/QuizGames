@@ -1,18 +1,10 @@
 package radoslav.yordanov.quizgames.controller;
 
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.os.AsyncTask;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +25,6 @@ public class ScoreActivity extends AppCompatActivity {
     public static final String EXTRA_correctAnswers = "correctAnswers";
     private int score;
     private String quizType;
-    private float scale;
     private ProgressDialog progressDialog;
 
     @Override
@@ -53,54 +44,13 @@ public class ScoreActivity extends AppCompatActivity {
             String ansQuestionsText = String.format(getResources().getString(R.string.answeredQuestions), correctAnswers);
             answeredQuestions.setText(ansQuestionsText);
         }
-        scale = getResources().getDisplayMetrics().density;
+
     }
 
     public void onSubmitScoreClick(View view) {
-        // Dialog to enter nickname
-        AlertDialog.Builder editDialogBuilder = new AlertDialog.Builder(ScoreActivity.this);
-        // Dialog to show error if nickname is empty
-        final AlertDialog.Builder errorDialog = new AlertDialog.Builder(ScoreActivity.this);
-
-        editDialogBuilder.setTitle(getResources().getString(R.string.enterNickname));
-        final EditText input = new EditText(ScoreActivity.this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
-        LinearLayout layout = new LinearLayout(ScoreActivity.this);
-        layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setPadding((int) scale * 5, 0, (int) scale * 5, 0);
-        layout.addView(input);
-        editDialogBuilder.setView(layout);
-        editDialogBuilder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                        String nickname = input.getText().toString();
-                        String tempNick = nickname.replaceAll("\\s", "");
-                        if (tempNick.isEmpty() || tempNick.equals("")) {
-                            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
-                            errorDialog.show();
-                        } else {
-                            progressDialog = ProgressDialog.show(ScoreActivity.this, "",
-                                    getResources().getString(R.string.loading), true);
-                            new ResultTask().execute(nickname);
-                        }
-                    }
-                }
-        );
-        editDialogBuilder.setNegativeButton(getString(R.string.cancel), null);
-
-        // Create the dialog to enter nickname
-        final AlertDialog editDialog = editDialogBuilder.create();
-        editDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-        editDialog.show();
-
-        errorDialog.setMessage(getResources().getString(R.string.nicknameEmpty));
-        errorDialog.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                editDialog.show();
-            }
-        });
+        progressDialog = ProgressDialog.show(ScoreActivity.this, "",
+                getResources().getString(R.string.loading), true);
+        new ResultTask().execute("");
     }
 
     private class ResultTask extends AsyncTask<String, Void, Boolean> {
@@ -111,7 +61,7 @@ public class ScoreActivity extends AppCompatActivity {
             QuizGamesAPI quizService = QuizGamesApplication.getQuizGamesService();
 
             Result resultModel = new Result();
-            resultModel.setName(params[0]);
+            resultModel.setUser_id(QuizGamesApplication.userId);
             resultModel.setScore(score);
             Call<Void> postResultCall = quizService.postResult(quizType, resultModel);
             try {

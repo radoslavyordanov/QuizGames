@@ -16,7 +16,9 @@ public class QuizGamesApplication extends Application {
     private static final String endpoint = "http://46.40.127.6:3000";
 
     public static final String USER_ID_PREF = "USER_ID";
+    public static final String USER_ROLE_ID = "USER_ROLE_ID";
     public static int userId;
+    public static int userRoleId;
 
     public static QuizGamesAPI getQuizGamesService() {
 

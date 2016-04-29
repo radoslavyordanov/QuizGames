@@ -2,6 +2,7 @@ package radoslav.yordanov.quizgames;
 
 import java.util.List;
 
+import radoslav.yordanov.quizgames.model.Quiz;
 import radoslav.yordanov.quizgames.model.QuizAPI;
 import radoslav.yordanov.quizgames.model.Result;
 import radoslav.yordanov.quizgames.model.User;
@@ -24,7 +25,7 @@ public interface QuizGamesAPI {
             "content-type: application/json"
     })
     @POST("/results/{quizType}")
-    Call<Void>  postResult(@Path("quizType") String quizType, @Body Result result);
+    Call<Void> postResult(@Path("quizType") String quizType, @Body Result result);
 
     @Headers({
             "content-type: application/json"
@@ -37,4 +38,7 @@ public interface QuizGamesAPI {
 
     @POST("/register")
     Call<User> postRegister(@Body User user);
+
+    @POST("/addQuiz")
+    Call<Quiz> addQuiz(@Body Quiz quiz);
 }

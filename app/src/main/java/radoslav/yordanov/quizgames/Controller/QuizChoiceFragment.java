@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -81,10 +82,30 @@ public class QuizChoiceFragment extends Fragment {
         Button selection3 = (Button) rootView.findViewById(R.id.selection3);
         Button selection4 = (Button) rootView.findViewById(R.id.selection4);
         Button[] selections = {selection1, selection2, selection3, selection4};
-        for (int i = 0; i < 4; i++) {
-            selections[i].setText(quizChoices.get(i).getChoice());
-            selections[i].setTag(quizChoices.get(i).getIsRightChoice());
+        final EditText answer = (EditText) rootView.findViewById(R.id.answer);
+        Button singleAnswer = (Button) rootView.findViewById(R.id.singleAnswer);
+
+        if (quizChoices.size() == 4) {
+            for (int i = 0; i < 4; i++) {
+                selections[i].setText(quizChoices.get(i).getChoice());
+                selections[i].setTag(quizChoices.get(i).getIsRightChoice());
+            }
+        } else {
+            selection1.setVisibility(View.GONE);
+            selection2.setVisibility(View.GONE);
+            selection3.setVisibility(View.GONE);
+            selection4.setVisibility(View.GONE);
+            answer.setVisibility(View.VISIBLE);
+            singleAnswer.setVisibility(View.VISIBLE);
+            singleAnswer.setTag(quizChoices.get(0).getChoice());
+            singleAnswer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((QuizActivity) getActivity()).onSingleAnswerClick(v, answer.getText().toString());
+                }
+            });
         }
+
         return rootView;
     }
 

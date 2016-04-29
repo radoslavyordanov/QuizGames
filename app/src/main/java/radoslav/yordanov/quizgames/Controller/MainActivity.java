@@ -33,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
+        if (QuizGamesApplication.userRoleId != 1) {
+            MenuItem add = menu.findItem(R.id.add);
+            add.setVisible(false);
+        }
         return true;
     }
 
@@ -55,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
                 });
                 dialog.setNegativeButton(getResources().getString(R.string.no), null);
                 dialog.show();
+                return true;
+            case R.id.add:
+                Intent intent = new Intent(MainActivity.this, AddQuizActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
