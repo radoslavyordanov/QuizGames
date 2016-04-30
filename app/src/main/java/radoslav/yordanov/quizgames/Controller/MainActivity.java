@@ -18,6 +18,7 @@ import radoslav.yordanov.quizgames.QuizGamesApplication;
 import radoslav.yordanov.quizgames.R;
 
 public class MainActivity extends AppCompatActivity {
+    private int timedQuiz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
-        ft.replace(R.id.activity_main, new QuizSelectionFragment());
-        ft.addToBackStack("quiz");
+        ft.replace(R.id.activity_main, new QuizTimeFragment());
+        ft.addToBackStack("quizTime");
         ft.commit();
     }
 
@@ -95,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
     public void onCarsQuizClick(View view) {
         Intent intent = new Intent(this, QuizActivity.class);
         intent.putExtra(QuizActivity.EXTRA_quizType, "cars");
+        intent.putExtra(QuizActivity.EXTRA_timed, timedQuiz);
         startActivity(intent);
         // overridePendingTransition(R.anim.enter, R.anim.exit);
     }
@@ -102,16 +104,37 @@ public class MainActivity extends AppCompatActivity {
     public void onLogosQuizClick(View view) {
         Intent intent = new Intent(this, QuizActivity.class);
         intent.putExtra(QuizActivity.EXTRA_quizType, "logos");
+        intent.putExtra(QuizActivity.EXTRA_timed, timedQuiz);
         startActivity(intent);
     }
 
     public void onCitiesQuizClick(View view) {
         Intent intent = new Intent(this, QuizActivity.class);
         intent.putExtra(QuizActivity.EXTRA_quizType, "cities");
+        intent.putExtra(QuizActivity.EXTRA_timed, timedQuiz);
         startActivity(intent);
     }
 
 
+    public void onTimeLimitClick(View view) {
+        timedQuiz = 1;
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
+        ft.replace(R.id.activity_main, new QuizSelectionFragment());
+        ft.addToBackStack("quizSelection");
+        ft.commit();
+    }
+
+    public void onNoLimitClick(View view) {
+        timedQuiz = 0;
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
+        ft.replace(R.id.activity_main, new QuizSelectionFragment());
+        ft.addToBackStack("quizSelection");
+        ft.commit();
+    }
 }
 
 

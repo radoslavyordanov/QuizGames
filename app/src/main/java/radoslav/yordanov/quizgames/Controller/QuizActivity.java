@@ -41,7 +41,9 @@ import retrofit2.Response;
 public class QuizActivity extends AppCompatActivity {
 
     public static final String EXTRA_quizType = "quizType";
+    public static final String EXTRA_timed = "timed";
     private String quizType;
+    private int timedQuiz;
     private static final int MAX_TIME = 20;
     private static final int MAX_POINTS = 100;
     private static final int MAX_QUESTIONS = 20;
@@ -64,11 +66,14 @@ public class QuizActivity extends AppCompatActivity {
         res = getResources();
         mViewPager = (NonSwipeViewPager) findViewById(R.id.quizPager);
         quizType = getIntent().getStringExtra(EXTRA_quizType);
+        timedQuiz = getIntent().getIntExtra(EXTRA_timed, 1);
         spinner = (ProgressBar) findViewById(R.id.progressBar);
         new QuizTask().execute(quizType);
         stopWatchTV = (TextView) findViewById(R.id.stopWatchTV);
         String timeLeftText = String.format(res.getString(R.string.timeLeft), 0);
         stopWatchTV.setText(timeLeftText);
+        if (timedQuiz == 0)
+            stopWatchTV.setVisibility(View.INVISIBLE);
         scoreTV = (TextView) findViewById(R.id.scoreTV);
         String scoreText = String.format(res.getString(R.string.score), score);
         scoreTV.setText(scoreText);
@@ -114,7 +119,8 @@ public class QuizActivity extends AppCompatActivity {
             String questionPos = String.format(res.getString(R.string.questionPosition), mViewPager.getCurrentItem() + 1, MAX_QUESTIONS);
             questionPositionTV.setText(questionPos);
             stopWatch = new Stopwatch();
-            stopWatch.start();
+            if (timedQuiz == 1)
+                stopWatch.start();
         }
 
     }
@@ -207,7 +213,8 @@ public class QuizActivity extends AppCompatActivity {
         public void run() {
             if (stopWatch == null) {
                 stopWatch = new Stopwatch();
-                stopWatch.start();
+                if (timedQuiz == 1)
+                    stopWatch.start();
             }
             if (stopWatch.getElapsedTimeSecs() == MAX_TIME) {
                 if (mViewPager.getCurrentItem() == MAX_QUESTIONS - 1) {
@@ -225,7 +232,8 @@ public class QuizActivity extends AppCompatActivity {
                     String questionPos = String.format(res.getString(R.string.questionPosition), mViewPager.getCurrentItem() + 1, MAX_QUESTIONS);
                     questionPositionTV.setText(questionPos);
                     stopWatch = new Stopwatch();
-                    stopWatch.start();
+                    if (timedQuiz == 1)
+                        stopWatch.start();
                 }
 
             }
@@ -263,7 +271,8 @@ public class QuizActivity extends AppCompatActivity {
             String questionPos = String.format(res.getString(R.string.questionPosition), mViewPager.getCurrentItem() + 1, MAX_QUESTIONS);
             questionPositionTV.setText(questionPos);
             stopWatch = new Stopwatch();
-            stopWatch.start();
+            if (timedQuiz == 1)
+                stopWatch.start();
         }
 
     }

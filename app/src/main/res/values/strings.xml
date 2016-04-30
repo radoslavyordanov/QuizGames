@@ -93,4 +93,8 @@
     <string name="quizImgEmpty">Quiz image can\'t be empty. Please try again.</string>
     <string name="quizAnswerEmpty">Quiz answer can\'t be empty. Please try again.</string>
     <string name="quizChoiceEmpty">Quiz choice can\'t be empty. Please try again.</string>
+
+    <!-- QuizTimeFragment -->
+    <string name="timeLimit">Time limit</string>
+    <string name="noLimit">No limit</string>
 </resources>
