@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         SharedPreferences appPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
                         appPreferences.edit().putInt(QuizGamesApplication.USER_ID_PREF, -1).apply();
+                        appPreferences.edit().putInt(QuizGamesApplication.USER_ROLE_ID, -1).apply();
                         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
