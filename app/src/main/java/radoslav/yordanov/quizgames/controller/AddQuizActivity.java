@@ -86,6 +86,11 @@ public class AddQuizActivity extends AppCompatActivity {
             dialog.show();
             return;
         }
+        if (!quizImg.getText().toString().startsWith("http://") && !quizImg.getText().toString().startsWith("https://")) {
+            dialog.setMessage(getResources().getString(R.string.quizImgInvalid));
+            dialog.show();
+            return;
+        }
         if (multipleChoices.isChecked()) {
             String tempChoice1 = choice1.getText().toString().replaceAll("\\s", "");
             String tempChoice2 = choice2.getText().toString().replaceAll("\\s", "");

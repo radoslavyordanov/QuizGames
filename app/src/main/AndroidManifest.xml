@@ -44,7 +44,15 @@
                 android:value=".controller.MainActivity" />
         </activity>
         <activity android:name=".controller.RegisterActivity" />
-        <activity android:name=".controller.AddQuizActivity" />
+        <activity
+            android:name=".controller.AddQuizActivity"
+            android:parentActivityName=".controller.MainActivity"
+            android:screenOrientation="portrait">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controller.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

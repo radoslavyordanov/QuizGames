@@ -91,6 +91,7 @@
     </string-array>
     <string name="add">Add</string>
     <string name="quizImgEmpty">Quiz image can\'t be empty. Please try again.</string>
+    <string name="quizImgInvalid">Invalid quiz image URL. Please try again.</string>
     <string name="quizAnswerEmpty">Quiz answer can\'t be empty. Please try again.</string>
     <string name="quizChoiceEmpty">Quiz choice can\'t be empty. Please try again.</string>
 
