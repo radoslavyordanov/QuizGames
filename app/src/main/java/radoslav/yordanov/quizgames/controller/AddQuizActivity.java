@@ -117,12 +117,15 @@ public class AddQuizActivity extends AppCompatActivity {
             QuizChoice quizChoice1 = new QuizChoice();
             quizChoice1.setChoice(choice1.getText().toString());
             quizChoice1.setIsRightChoice(correctChoiceId == 1 ? 1 : 0);
+
             QuizChoice quizChoice2 = new QuizChoice();
             quizChoice2.setChoice(choice2.getText().toString());
             quizChoice2.setIsRightChoice(correctChoiceId == 2 ? 1 : 0);
+
             QuizChoice quizChoice3 = new QuizChoice();
             quizChoice3.setChoice(choice3.getText().toString());
             quizChoice3.setIsRightChoice(correctChoiceId == 3 ? 1 : 0);
+
             QuizChoice quizChoice4 = new QuizChoice();
             quizChoice4.setChoice(choice4.getText().toString());
             quizChoice4.setIsRightChoice(correctChoiceId == 4 ? 1 : 0);
