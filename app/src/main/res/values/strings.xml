@@ -70,7 +70,7 @@
 
     <!-- Add quiz Activity -->
     <string name="quizType">Quiz type:</string>
-    <string name="quizImg">Image url:</string>
+    <string name="quizImg">Image URL:</string>
     <string-array name="quizTypes">
         <item>Cars</item>
         <item>Logos</item>

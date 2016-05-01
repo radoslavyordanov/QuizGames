@@ -50,12 +50,13 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void onSubmitClick(View view) {
         String tempUsername = username.getText().toString().replaceAll("\\s", "");
+        String tempPassword = password.getText().toString().replaceAll("\\s", "");
         if (tempUsername.isEmpty() || tempUsername.equals("")) {
             AlertDialog.Builder dialog = new AlertDialog.Builder(this);
             dialog.setMessage(getResources().getString(R.string.nicknameEmpty));
             dialog.setPositiveButton("Okay", null);
             dialog.show();
-        } else if (password.getText().toString().isEmpty() || password.getText().toString().equals("")) {
+        } else if (tempPassword.isEmpty() || tempPassword.equals("")) {
             AlertDialog.Builder dialog = new AlertDialog.Builder(this);
             dialog.setMessage(getResources().getString(R.string.passwordEmpty));
             dialog.setPositiveButton("Okay", null);

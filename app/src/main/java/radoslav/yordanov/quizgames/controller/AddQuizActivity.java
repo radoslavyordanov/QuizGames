@@ -80,28 +80,34 @@ public class AddQuizActivity extends AppCompatActivity {
         AlertDialog.Builder dialog = new AlertDialog.Builder(AddQuizActivity.this);
         dialog.setPositiveButton("Okay", null);
 
-        if (quizImg.getText().toString().isEmpty() || quizImg.getText().toString().equals("")) {
+        String tempQuizImg = quizImg.getText().toString().replaceAll("\\s", "");
+        if (tempQuizImg.isEmpty() || tempQuizImg.equals("")) {
             dialog.setMessage(getResources().getString(R.string.quizImgEmpty));
             dialog.show();
             return;
         }
         if (multipleChoices.isChecked()) {
-            if (choice1.getText().toString().isEmpty() || choice1.getText().toString().equals("")) {
+            String tempChoice1 = choice1.getText().toString().replaceAll("\\s", "");
+            String tempChoice2 = choice2.getText().toString().replaceAll("\\s", "");
+            String tempChoice3 = choice3.getText().toString().replaceAll("\\s", "");
+            String tempChoice4 = choice4.getText().toString().replaceAll("\\s", "");
+
+            if (tempChoice1.isEmpty() || tempChoice1.equals("")) {
                 dialog.setMessage(getResources().getString(R.string.quizChoiceEmpty));
                 dialog.show();
                 return;
             }
-            if (choice2.getText().toString().isEmpty() || choice2.getText().toString().equals("")) {
+            if (tempChoice2.isEmpty() || tempChoice2.equals("")) {
                 dialog.setMessage(getResources().getString(R.string.quizChoiceEmpty));
                 dialog.show();
                 return;
             }
-            if (choice3.getText().toString().isEmpty() || choice3.getText().toString().equals("")) {
+            if (tempChoice3.isEmpty() || tempChoice3.equals("")) {
                 dialog.setMessage(getResources().getString(R.string.quizChoiceEmpty));
                 dialog.show();
                 return;
             }
-            if (choice4.getText().toString().isEmpty() || choice4.getText().toString().equals("")) {
+            if (tempChoice4.isEmpty() || tempChoice4.equals("")) {
                 dialog.setMessage(getResources().getString(R.string.quizChoiceEmpty));
                 dialog.show();
                 return;
@@ -130,7 +136,9 @@ public class AddQuizActivity extends AppCompatActivity {
             quiz.addQuizChoice(quizChoice4);
             new AddQuizTask().execute("");
         } else {
-            if (singleAnswer.getText().toString().isEmpty() || singleAnswer.getText().toString().equals("")) {
+            String tempSingleAnswer = singleAnswer.getText().toString().replaceAll("\\s", "");
+
+            if (tempSingleAnswer.isEmpty() || tempSingleAnswer.equals("")) {
                 dialog.setMessage(getResources().getString(R.string.quizAnswerEmpty));
                 dialog.show();
                 return;
