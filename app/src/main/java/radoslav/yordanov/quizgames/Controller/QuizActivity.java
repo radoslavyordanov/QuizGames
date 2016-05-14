@@ -32,7 +32,6 @@ import radoslav.yordanov.quizgames.model.QuizChoice;
 import radoslav.yordanov.quizgames.QuizGamesAPI;
 import radoslav.yordanov.quizgames.QuizGamesApplication;
 import radoslav.yordanov.quizgames.R;
-import radoslav.yordanov.quizgames.util.Stopwatch;
 import radoslav.yordanov.quizgames.view.NetworkDialog;
 import radoslav.yordanov.quizgames.view.NonSwipeViewPager;
 import retrofit2.Call;
@@ -49,15 +48,16 @@ public class QuizActivity extends AppCompatActivity {
     private static final int MAX_QUESTIONS = 20;
     private int score = 0;
     private int correctAnswers = 0;
+    private int elapsedTime = 0;
     private Resources res;
     private NonSwipeViewPager mViewPager;
     private ArrayList<Quiz> quizList;
     private int previousQuizId = -1;
-    private Stopwatch stopWatch;
     private TextView stopWatchTV;
     private TextView scoreTV;
     private TextView questionPositionTV;
     private ProgressBar spinner;
+    private RepeatingThread repeatingThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,13 +99,12 @@ public class QuizActivity extends AppCompatActivity {
 
     public void onSelectionClick(View view) {
         if ((int) view.getTag() == 1) {
-            score += (MAX_POINTS / MAX_TIME) * (MAX_TIME - stopWatch.getElapsedTimeSecs());
+            score += (MAX_POINTS / MAX_TIME) * (MAX_TIME - elapsedTime);
             correctAnswers++;
             String scoreText = String.format(res.getString(R.string.score), score);
             scoreTV.setText(scoreText);
         }
         if (mViewPager.getCurrentItem() == MAX_QUESTIONS - 1) {
-            stopWatch.stop();
             Intent intent = new Intent(this, ScoreActivity.class);
             intent.putExtra(ScoreActivity.EXTRA_score, score);
             intent.putExtra(ScoreActivity.EXTRA_quizType, quizType);
@@ -118,9 +117,7 @@ public class QuizActivity extends AppCompatActivity {
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
             String questionPos = String.format(res.getString(R.string.questionPosition), mViewPager.getCurrentItem() + 1, MAX_QUESTIONS);
             questionPositionTV.setText(questionPos);
-            stopWatch = new Stopwatch();
-            if (timedQuiz == 1)
-                stopWatch.start();
+            elapsedTime = 0;
         }
 
     }
@@ -194,7 +191,8 @@ public class QuizActivity extends AppCompatActivity {
                 //success
                 Collections.shuffle(quizList);
                 mViewPager.setAdapter(new QuizAdapter(getSupportFragmentManager(), quizList));
-                final Thread t = new Thread(new RepeatingThread());
+                repeatingThread = new RepeatingThread();
+                Thread t = new Thread(repeatingThread);
                 t.start();
             } else {
                 new NetworkDialog().show(getFragmentManager(), "networkDialog");
@@ -204,21 +202,19 @@ public class QuizActivity extends AppCompatActivity {
 
     private class RepeatingThread implements Runnable {
 
-        private final Handler mHandler = new Handler();
+        private Handler mHandler = new Handler();
 
         public RepeatingThread() {
         }
 
+        public void stopHandler() {
+            mHandler.removeCallbacks(this);
+        }
+
         @Override
         public void run() {
-            if (stopWatch == null) {
-                stopWatch = new Stopwatch();
-                if (timedQuiz == 1)
-                    stopWatch.start();
-            }
-            if (stopWatch.getElapsedTimeSecs() == MAX_TIME) {
+            if (elapsedTime == MAX_TIME) {
                 if (mViewPager.getCurrentItem() == MAX_QUESTIONS - 1) {
-                    stopWatch.stop();
                     Intent intent = new Intent(QuizActivity.this, ScoreActivity.class);
                     intent.putExtra(ScoreActivity.EXTRA_score, score);
                     intent.putExtra(ScoreActivity.EXTRA_quizType, quizType);
@@ -231,17 +227,18 @@ public class QuizActivity extends AppCompatActivity {
                     mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
                     String questionPos = String.format(res.getString(R.string.questionPosition), mViewPager.getCurrentItem() + 1, MAX_QUESTIONS);
                     questionPositionTV.setText(questionPos);
-                    stopWatch = new Stopwatch();
-                    if (timedQuiz == 1)
-                        stopWatch.start();
+                    elapsedTime = 0;
                 }
 
             }
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    String timeLeftText = String.format(res.getString(R.string.timeLeft), MAX_TIME - stopWatch.getElapsedTimeSecs());
+                    String timeLeftText = String.format(res.getString(R.string.timeLeft), MAX_TIME - elapsedTime);
                     stopWatchTV.setText(timeLeftText);
+
+                    if (timedQuiz == 1)
+                        elapsedTime += 1;
                 }
             });
 
@@ -257,7 +254,6 @@ public class QuizActivity extends AppCompatActivity {
             scoreTV.setText(scoreText);
         }
         if (mViewPager.getCurrentItem() == MAX_QUESTIONS - 1) {
-            stopWatch.stop();
             Intent intent = new Intent(this, ScoreActivity.class);
             intent.putExtra(ScoreActivity.EXTRA_score, score);
             intent.putExtra(ScoreActivity.EXTRA_quizType, quizType);
@@ -270,11 +266,15 @@ public class QuizActivity extends AppCompatActivity {
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
             String questionPos = String.format(res.getString(R.string.questionPosition), mViewPager.getCurrentItem() + 1, MAX_QUESTIONS);
             questionPositionTV.setText(questionPos);
-            stopWatch = new Stopwatch();
-            if (timedQuiz == 1)
-                stopWatch.start();
+            elapsedTime = 0;
         }
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (repeatingThread != null)
+            repeatingThread.stopHandler();
+    }
 }

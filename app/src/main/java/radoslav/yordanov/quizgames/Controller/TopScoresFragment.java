@@ -108,7 +108,7 @@ public class TopScoresFragment extends Fragment {
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
             spinner.setVisibility(View.GONE);
-            if (result) {
+            if (result && resultsList != null) {
                 listView.setAdapter(new TopScoresAdapter(getActivity(), R.layout.topscores_row, resultsList));
             } else {
                 new NetworkDialog().show(getActivity().getFragmentManager(), "networkDialog");
