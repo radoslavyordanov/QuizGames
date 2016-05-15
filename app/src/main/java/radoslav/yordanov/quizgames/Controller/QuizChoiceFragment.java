@@ -16,15 +16,20 @@
 
 package radoslav.yordanov.quizgames.controller;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -99,7 +104,6 @@ public class QuizChoiceFragment extends Fragment {
         Button selection4 = (Button) rootView.findViewById(R.id.selection4);
         Button[] selections = {selection1, selection2, selection3, selection4};
         final EditText answer = (EditText) rootView.findViewById(R.id.answer);
-        Button singleAnswer = (Button) rootView.findViewById(R.id.singleAnswer);
 
         if (quizChoices.size() == 4) {
             for (int i = 0; i < 4; i++) {
@@ -112,12 +116,16 @@ public class QuizChoiceFragment extends Fragment {
             selection3.setVisibility(View.GONE);
             selection4.setVisibility(View.GONE);
             answer.setVisibility(View.VISIBLE);
-            singleAnswer.setVisibility(View.VISIBLE);
-            singleAnswer.setTag(quizChoices.get(0).getChoice());
-            singleAnswer.setOnClickListener(new View.OnClickListener() {
+            answer.setOnEditorActionListener(new EditText.OnEditorActionListener() {
                 @Override
-                public void onClick(View v) {
-                    ((QuizActivity) getActivity()).onSingleAnswerClick(v, answer.getText().toString());
+                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                    if (actionId == EditorInfo.IME_ACTION_DONE) {
+                        ((QuizActivity) getActivity()).onSingleAnswerClick(quizChoices.get(0).getChoice(), answer.getText().toString());
+                        InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                        return true;
+                    }
+                    return false;
                 }
             });
         }

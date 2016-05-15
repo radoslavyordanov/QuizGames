@@ -262,8 +262,8 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
-    public void onSingleAnswerClick(View v, String answer) {
-        if (v.getTag().toString().toLowerCase().equals(answer.toLowerCase())) {
+    public void onSingleAnswerClick(String correctAnswer, String userInput) {
+        if (correctAnswer.toLowerCase().equals(userInput.toLowerCase())) {
             score += 150;
             correctAnswers++;
             String scoreText = String.format(res.getString(R.string.score), score);
