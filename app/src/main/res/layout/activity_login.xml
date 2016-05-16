@@ -39,6 +39,8 @@
             android:id="@+id/username"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
             android:textColor="@android:color/white"
             android:theme="@style/MyEditTextTheme" />
     </LinearLayout>

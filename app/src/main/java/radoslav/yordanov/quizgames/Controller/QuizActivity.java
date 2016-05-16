@@ -125,6 +125,7 @@ public class QuizActivity extends AppCompatActivity {
             intent.putExtra(ScoreActivity.EXTRA_score, score);
             intent.putExtra(ScoreActivity.EXTRA_quizType, quizType);
             intent.putExtra(ScoreActivity.EXTRA_correctAnswers, correctAnswers);
+            intent.putExtra(ScoreActivity.EXTRA_timed, timedQuiz);
             TaskStackBuilder sBuilder = TaskStackBuilder.create(this);
             sBuilder.addParentStack(ScoreActivity.class);
             sBuilder.addNextIntent(intent);
@@ -235,6 +236,7 @@ public class QuizActivity extends AppCompatActivity {
                     intent.putExtra(ScoreActivity.EXTRA_score, score);
                     intent.putExtra(ScoreActivity.EXTRA_quizType, quizType);
                     intent.putExtra(ScoreActivity.EXTRA_correctAnswers, correctAnswers);
+                    intent.putExtra(ScoreActivity.EXTRA_timed, timedQuiz);
                     TaskStackBuilder sBuilder = TaskStackBuilder.create(QuizActivity.this);
                     sBuilder.addParentStack(ScoreActivity.class);
                     sBuilder.addNextIntent(intent);
@@ -274,6 +276,7 @@ public class QuizActivity extends AppCompatActivity {
             intent.putExtra(ScoreActivity.EXTRA_score, score);
             intent.putExtra(ScoreActivity.EXTRA_quizType, quizType);
             intent.putExtra(ScoreActivity.EXTRA_correctAnswers, correctAnswers);
+            intent.putExtra(ScoreActivity.EXTRA_timed, timedQuiz);
             TaskStackBuilder sBuilder = TaskStackBuilder.create(this);
             sBuilder.addParentStack(ScoreActivity.class);
             sBuilder.addNextIntent(intent);

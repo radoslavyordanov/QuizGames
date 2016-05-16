@@ -21,6 +21,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,8 +40,10 @@ public class ScoreActivity extends AppCompatActivity {
     public static final String EXTRA_score = "score";
     public static final String EXTRA_quizType = "quizType";
     public static final String EXTRA_correctAnswers = "correctAnswers";
+    public static final String EXTRA_timed = "timed";
     private int score;
     private String quizType;
+    private int timedQuiz;
     private ProgressDialog progressDialog;
 
     @Override
@@ -59,6 +62,14 @@ public class ScoreActivity extends AppCompatActivity {
         if (answeredQuestions != null) {
             String ansQuestionsText = String.format(getResources().getString(R.string.answeredQuestions), correctAnswers);
             answeredQuestions.setText(ansQuestionsText);
+        }
+
+        Button submit = (Button) findViewById(R.id.submitScore);
+        timedQuiz = getIntent().getIntExtra(EXTRA_timed, 1);
+        if (submit != null) {
+            if (timedQuiz == 0)
+                submit.setVisibility(View.INVISIBLE);
+            else submit.setVisibility(View.VISIBLE);
         }
 
     }
